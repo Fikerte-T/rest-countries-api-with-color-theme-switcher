@@ -1,14 +1,16 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { CountriesContext } from './Contexts/CountriesContext'
 
-const Countries = ({countries, loading}) => {
+const Countries = () => {
+  const {countries, loading, filteredCountries} = useContext(CountriesContext)
+  console.log(filteredCountries)
   console.log(countries)
-  console.log(loading)
   return (
     <div>
       {loading && <p>Loading</p>}
       <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-20 justify-center px-20'>
       {
-        countries && countries.slice(0,8).map((c, i) => (
+        filteredCountries && filteredCountries.slice(0,8).map((c, i) => (
           <div key={i} className='rounded-lg bg-custom-white shadow'>
             <img src={c.flag} alt={`${c.name} flag`} className='w-full h-45 object-cover rounded-t-lg'/>
             <div className='p-4 h-50'>
