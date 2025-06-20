@@ -1,0 +1,28 @@
+import React from 'react'
+
+const Countries = ({countries, loading}) => {
+  console.log(countries)
+  console.log(loading)
+  return (
+    <div>
+      {loading && <p>Loading</p>}
+      <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-20 justify-center px-20'>
+      {
+        countries && countries.slice(0,8).map((c, i) => (
+          <div key={i} className='rounded-lg bg-custom-white shadow'>
+            <img src={c.flag} alt={`${c.name} flag`} className='w-full h-45 object-cover rounded-t-lg'/>
+            <div className='p-4 h-50'>
+              <h2 className='font-bold text-xl py-4'>{c.name}</h2>
+              <p className='font-semibold text-nowrap'>Population: <span className='font-light'>{c.population}</span></p>
+              <p className='font-semibold'>Region: <span className='font-light'> {c.region}</span></p>
+              <p className='font-semibold'>Capital: <span className='font-light'> {c.capital}</span></p>
+            </div>
+          </div>
+        ))
+      }
+      </div>
+    </div>
+  )
+}
+
+export default Countries

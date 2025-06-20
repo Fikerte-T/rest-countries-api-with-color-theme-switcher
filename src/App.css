@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-hanken: "Hanken Grotesk", sans-serif;
+  --color-dm-elements: hsl(209, 23%, 22%);
+  --color-dm-bg: hsl(207, 26%, 17%);
+  --color-lm-text: hsl(200, 15%, 8%);
+  --color-lm-input: hsl(0, 0%, 50%);
+  --color-lm-bg: hsl(0, 0%, 99%);
+  --color-custom-white: hsl(0, 100%, 100%);
+}
