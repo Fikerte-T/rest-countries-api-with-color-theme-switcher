@@ -3,8 +3,8 @@ import { CountriesContext } from './Contexts/CountriesContext'
 
 const Countries = () => {
   const {countries, loading, filteredCountries} = useContext(CountriesContext)
-  console.log(filteredCountries)
-  console.log(countries)
+  // console.log(filteredCountries)
+  // console.log(countries)
   return (
     <div>
       {loading && <p>Loading</p>}
