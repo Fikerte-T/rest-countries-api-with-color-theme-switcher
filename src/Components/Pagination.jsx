@@ -16,18 +16,18 @@ const Pagination = () => {
 
 
   return (
-    <div className='flex justify-center items-center mt-5 mb-10 '>
+    <div className='flex justify-center items-center mt-5 mb-10 dark:text-lm-bg '>
         <button 
         onClick={() => setCurrentPage(prev => Math.max(prev -1, 1))}
         disabled={currentPage === 1}
-        className='border-1 border-lm-input rounded-lg w-25 m-3 p-2 hover:bg-dm-bg hover:text-custom-white'
+        className='border-1 border-lm-input rounded-lg w-25 m-3 p-2 hover:bg-dm-bg hover:text-custom-white dark:bg-dm-elements dark:text-custom-white'
         >Previous</button>
 
         <span>{currentPage} of {totalPages}</span>
 
         <button onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
         disabled={currentPage === totalPages}
-        className='border-1 border-lm-input rounded-lg w-25 m-3 p-2 hover:bg-dm-bg hover:text-custom-white'
+        className='border-1 border-lm-input rounded-lg w-25 m-3 p-2 hover:bg-dm-bg hover:text-custom-white dark:bg-dm-elements dark:text-custom-white'
         >Next</button>
 
     </div>

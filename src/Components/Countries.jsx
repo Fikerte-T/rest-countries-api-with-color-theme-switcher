@@ -11,7 +11,7 @@ const Countries = () => {
       <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-20 justify-center px-20'>
       {
         currentItems && currentItems.map((c, i) => (
-          <div key={i} className='rounded-lg bg-custom-white shadow'>
+          <div key={i} className='rounded-lg bg-custom-white dark:bg-dm-elements dark:text-lm-bg shadow'>
             <img src={c.flag} alt={`${c.name} flag`} className='w-full h-45 object-cover rounded-t-lg'/>
             <div className='p-4 h-50'>
               <h2 className='font-bold text-xl py-4'>{c.name}</h2>

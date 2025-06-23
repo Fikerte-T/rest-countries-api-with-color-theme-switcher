@@ -26,19 +26,19 @@ const Filters = () => {
         <form action="" className=''>
             <div className='flex justify-between items-center px-20'>
 
-                <div className='shadow-md w-1/3 p-6 rounded-md relative' >
-                    <div class="absolute inset-y-0 start-6 flex items-center ps-3 pointer-events-none">
-                        <svg class="w-6 h-6 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                <div className='shadow-md w-1/3 p-4 rounded-md relative text-lm-input dark:text-custom-white dark:bg-dm-elements' >
+                    <div className="absolute inset-y-0 start-6 flex items-center ps-3 pointer-events-none">
+                        <svg className="w-5 h-5 text-gray-500 dark:text-custom-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
                         </svg>
                     </div>
-                    <input className='ml-14 focus:outline-none' type="search" name="country" id="" placeholder='Search for a country...'
+                    <input className='ml-18 focus:outline-none' type="search" name="country" id="" placeholder='Search for a country...'
                     onChange={e => setSearchValue(e.target.value)}
                     />
                 </div>
                 <div>
 
-                    <select name="country" id="countries" className=' shadow-md p-4 rounded-md focus:outline-none'
+                    <select name="country" id="countries" className=' shadow-md p-4 rounded-md focus:outline-none dark:text-custom-white dark:bg-dm-elements'
                     onChange={e => setSelectedRegion(e.target.value)}
                     >
                         <option value="">Filter by Region</option>

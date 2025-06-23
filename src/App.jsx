@@ -18,6 +18,7 @@ function App() {
   const [currentPage, setCurrentPage] = useState(1)
 
   
+
   // console.log(countries)
   const fetchCountries = () => {
     fetch('./data.json')
@@ -50,7 +51,7 @@ function App() {
   // console.log(regions)
   return (
     <CountriesContext.Provider value={{countries, setCountries, loading, setLoading, regions, setRegions, filteredCountries, setFilteredCountries, currentItems, setCurrentItems, currentPage, setCurrentPage}}>
-      <main className='font-hanken min-h-screen bg-lm-bg text-lm-text  grid gap-14'>
+      <main className='font-hanken min-h-screen bg-lm-bg dark:bg-dm-bg text-lm-text  grid gap-14'>
         {error && <p>{error}</p>}
         <TopSection />
         <Filters />
