@@ -5,6 +5,7 @@ import TopSection from './Components/TopSection'
 import Filters from './Components/Filters'
 import Countries from './Components/Countries'
 import { CountriesContext } from './Components/Contexts/CountriesContext.js'
+import Pagination from './Components/Pagination.jsx'
 
 
 function App() {
@@ -13,8 +14,11 @@ function App() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
   const [filteredCountries, setFilteredCountries] = useState([])
+  const [currentItems, setCurrentItems] = useState([])  
+  const [currentPage, setCurrentPage] = useState(1)
+
   
-  console.log(filteredCountries)
+  // console.log(countries)
   const fetchCountries = () => {
     fetch('./data.json')
     .then(res => res.json())
@@ -45,12 +49,13 @@ function App() {
 
   // console.log(regions)
   return (
-    <CountriesContext.Provider value={{countries, setCountries, loading, setLoading, regions, setRegions, filteredCountries, setFilteredCountries}}>
+    <CountriesContext.Provider value={{countries, setCountries, loading, setLoading, regions, setRegions, filteredCountries, setFilteredCountries, currentItems, setCurrentItems, currentPage, setCurrentPage}}>
       <main className='font-hanken min-h-screen bg-lm-bg text-lm-text  grid gap-14'>
         {error && <p>{error}</p>}
         <TopSection />
         <Filters />
         <Countries />
+        <Pagination />
       </main>
     </CountriesContext.Provider>
   )
