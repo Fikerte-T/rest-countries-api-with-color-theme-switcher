@@ -5,8 +5,6 @@ const Pagination = () => {
     const {filteredCountries, setCurrentItems, setCurrentPage, currentPage} = useContext(CountriesContext)
     const pageSize = 8
     const totalPages = Math.ceil(filteredCountries.length / pageSize )
-    console.log(currentPage)
-    // console.log(filteredCountries)
     
     useEffect(() => {
         const start = (currentPage - 1) * pageSize

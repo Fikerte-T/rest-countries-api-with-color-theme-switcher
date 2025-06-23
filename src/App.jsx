@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react'
 import './App.css'
 import './Components/TopSection'
-import TopSection from './Components/TopSection'
-import Filters from './Components/Filters'
-import Countries from './Components/Countries'
 import { CountriesContext } from './Components/Contexts/CountriesContext.js'
-import Pagination from './Components/Pagination.jsx'
+import HomePage from './Components/HomePage.jsx'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import CountryDetail from './Components/CountryDetail.jsx'
+import TopSection from './Components/TopSection'
 
 
 function App() {
@@ -50,14 +50,14 @@ function App() {
 
   // console.log(regions)
   return (
-    <CountriesContext.Provider value={{countries, setCountries, loading, setLoading, regions, setRegions, filteredCountries, setFilteredCountries, currentItems, setCurrentItems, currentPage, setCurrentPage}}>
-      <main className='font-hanken min-h-screen bg-lm-bg dark:bg-dm-bg text-lm-text  grid gap-14'>
-        {error && <p>{error}</p>}
-        <TopSection />
-        <Filters />
-        <Countries />
-        <Pagination />
-      </main>
+    <CountriesContext.Provider value={{error, countries, setCountries, loading, setLoading, regions, setRegions, filteredCountries, setFilteredCountries, currentItems, setCurrentItems, currentPage, setCurrentPage}}>
+    <Router>
+      <TopSection />
+      <Routes>
+        <Route path= '/' element={<HomePage />} />
+        <Route path='/detail/:name' element = {<CountryDetail />}/>
+      </Routes>
+    </Router>
     </CountriesContext.Provider>
   )
 }
