@@ -9,6 +9,9 @@ const Pagination = () => {
     useEffect(() => {
         const start = (currentPage - 1) * pageSize
         const end = start + pageSize
+        // if(currentPage > totalPages) {
+        //     setCurrentPage(0)
+        // }
         setCurrentItems(filteredCountries.slice(start, end))
     }, [currentPage, filteredCountries])
 

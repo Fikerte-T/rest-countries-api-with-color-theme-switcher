@@ -1,10 +1,25 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState, useRef } from 'react'
 import { CountriesContext } from './Contexts/CountriesContext'
 
 const Filters = () => {
-    const {regions, countries, setFilteredCountries, setCurrentPage} = useContext(CountriesContext)
+    const {regions, countries, setFilteredCountries, setCurrentPage, isDarkMode} = useContext(CountriesContext)
     const [selectedRegion, setSelectedRegion] = useState('')
     const [searchValue, setSearchValue] = useState('')
+    const [isOpen, setIsOpen] = useState(false)
+    const [selected, setSelected] = useState(null)
+
+      const dropdownRef = useRef();
+
+  // Close dropdown on outside click
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
     useEffect(() => {
         if(selectedRegion === '' && searchValue === '' ) {
@@ -16,10 +31,15 @@ const Filters = () => {
         } 
         if(searchValue !== '') {
             const filtered = countries.filter(c => c.name.toLowerCase().includes(searchValue.toLowerCase()))
-            console.log(filtered)
+            // console.log(filtered)
+            if(filtered.length === 0) {
+                setCurrentPage(0)
+            }
             setFilteredCountries(filtered)
         }
     }, [selectedRegion, searchValue])
+
+    
     
   return (
     <div className='my-14 '>
@@ -36,22 +56,27 @@ const Filters = () => {
                     onChange={e => setSearchValue(e.target.value)}
                     />
                 </div>
-                <div className=' w-fit shadow-md p-4 rounded-md text-lm-input  dark:text-custom-white dark:bg-dm-elements mt-10 md:m-0'>
-
-                    <select name="country" id="countries" className='pr-10 focus:outline-none dark:text-custom-white dark:bg-dm-elements'
-                    onChange={e => setSelectedRegion(e.target.value)}
-                    >
-                        <div className='p-4 bg-green-600 border-2 border-amber-300'>
-                            <option className='hidden' value="">Filter by Region</option>
-                            {
+                <div ref={dropdownRef} className='cursor-pointer w-fit shadow-md p-4 rounded-md text-lm-input  dark:text-custom-white dark:bg-dm-elements mt-10 md:m-0'>
+                    <div type='button' onClick={() => setIsOpen(prev => !prev)}>
+                        <img className='float-right w-4 h-4' src={isDarkMode ? '/dropdown-white.svg' : '/dropdown-black.svg'} alt="" />
+                        <span>{selected ||  "Filter by Region"}</span>
+                    </div>
+                   
+                        {isOpen && (
+                         <ul>
+                             {
                                 regions && regions.map((c, i) => (
-                                    <div className='border-2 border-amber-300'>
-                                        <option className='m-20' key={i} value={c}>{c}</option>
-                                    </div>
+                                    <li  className='' key={i}
+                                        onClick={() => {
+                                        setSelected(c)
+                                        setSelectedRegion(c)
+                                        setIsOpen(false)
+                                        }}
+                                    >{c}</li>
                                 )) 
-                            }
-                        </div>
-                    </select>
+                             }
+                         </ul>
+                        )}
                 </div>
             </div>
         </form>

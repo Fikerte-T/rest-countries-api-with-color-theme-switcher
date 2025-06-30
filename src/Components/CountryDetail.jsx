@@ -30,7 +30,7 @@ const CountryDetail = () => {
                 <div className='flex flex-col items-baseline space-y-10 lg:flex-row lg:justify-between '>
                     <div className='flex flex-col space-y-2'>
                         <p className='font-semibold'>Native Name: <span className='font-light'>{country.nativeName}</span></p>
-                        <p className='font-semibold'>Population: <span className='font-light'>{country.population}</span></p>
+                        <p className='font-semibold'>Population: <span className='font-light'>{country.population.toLocaleString()}</span></p>
                         <p className='font-semibold'>Region: <span className='font-light'>{country.region}</span></p>
                         <p className='font-semibold'>Sub Region: <span className='font-light'>{country.subregion}</span></p>
                         <p className='font-semibold'>Capital: <span className='font-light'>{country.capital}</span></p>
@@ -49,7 +49,7 @@ const CountryDetail = () => {
                 </div>
                 
                 <div className='mt-10'>
-                    <p className='font-semibold whitespace-nowrap flex flex-wrap gap-2'>Border Countries: 
+                    <p className='font-semibold flex flex-wrap gap-2'>Border Countries: 
                      {result.length > 0 ? result.map((r, i) => (
                         <Link to={`/detail/${r.name}`} className='px-3 shadow-md rounded-md hover:bg-dm-bg hover:text-lm-bg dark:bg-dm-elements dark:hover:text-lm-text dark:hover:bg-lm-bg 
                          font-light' key={i}>{r.name}</Link>

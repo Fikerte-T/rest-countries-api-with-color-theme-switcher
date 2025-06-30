@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react'
 import './App.css'
-import './Components/TopSection'
+import './Components/Header.jsx'
 import { CountriesContext } from './Components/Contexts/CountriesContext.js'
 import HomePage from './Components/HomePage.jsx'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import CountryDetail from './Components/CountryDetail.jsx'
-import TopSection from './Components/TopSection'
+import Header from './Components/Header.jsx'
 
 
 function App() {
@@ -54,7 +54,7 @@ function App() {
   return (
     <CountriesContext.Provider value={{isDarkMode, setIsDarkMode, error, countries, setCountries, loading, setLoading, regions, setRegions, filteredCountries, setFilteredCountries, currentItems, setCurrentItems, currentPage, setCurrentPage}}>
     <Router>
-      <TopSection />
+      <Header />
       <Routes>
         <Route path= '/' element={<HomePage />} />
         <Route path='/detail/:name' element = {<CountryDetail />}/>
