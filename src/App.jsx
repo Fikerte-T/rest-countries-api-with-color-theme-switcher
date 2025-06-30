@@ -16,6 +16,8 @@ function App() {
   const [filteredCountries, setFilteredCountries] = useState([])
   const [currentItems, setCurrentItems] = useState([])  
   const [currentPage, setCurrentPage] = useState(1)
+  const [isDarkMode, setIsDarkMode] = useState(false)
+
 
   
 
@@ -50,7 +52,7 @@ function App() {
 
   // console.log(regions)
   return (
-    <CountriesContext.Provider value={{error, countries, setCountries, loading, setLoading, regions, setRegions, filteredCountries, setFilteredCountries, currentItems, setCurrentItems, currentPage, setCurrentPage}}>
+    <CountriesContext.Provider value={{isDarkMode, setIsDarkMode, error, countries, setCountries, loading, setLoading, regions, setRegions, filteredCountries, setFilteredCountries, currentItems, setCurrentItems, currentPage, setCurrentPage}}>
     <Router>
       <TopSection />
       <Routes>

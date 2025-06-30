@@ -8,15 +8,15 @@ const Countries = () => {
   return (
     <div>
       {loading && <p>Loading</p>}
-      <ul className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-20 justify-center px-20'>
+      <ul className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 lg:gap-20 justify-center px-5 md:px-20'>
       {
         currentItems && currentItems.map((c, i) => (
-          <li key={i}  className='list-none'>
-            <Link to={`detail/${c.name}`} className='rounded-lg bg-custom-white dark:bg-dm-elements dark:text-lm-bg shadow text-left cursor-pointer' 
+          <li key={i}  className='list-none rounded-lg bg-custom-white dark:bg-dm-elements dark:text-lm-bg shadow text-left'>
+            <Link to={`detail/${c.name}`} className=' cursor-pointer' 
             state={{c}}
             >
               <img src={c.flag} alt={`${c.name} flag`} className='w-full h-45 object-cover rounded-t-lg'/>
-              <div className='p-4 h-50'>
+              <div className='p-4 h-50 '>
                 <h2 className='font-bold text-xl py-4'>{c.name}</h2>
                 <p className='font-semibold text-nowrap'>Population: <span className='font-light'>{c.population}</span></p>
                 <p className='font-semibold'>Region: <span className='font-light'> {c.region}</span></p>

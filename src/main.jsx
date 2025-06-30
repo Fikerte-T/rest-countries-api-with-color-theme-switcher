@@ -5,6 +5,8 @@ import App from './App.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <App />
+    <main className='font-hanken min-h-screen bg-lm-bg dark:bg-dm-bg'>
+      <App />
+    </main>
   </StrictMode>,
 )
