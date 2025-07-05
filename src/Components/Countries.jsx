@@ -6,7 +6,7 @@ const Countries = () => {
   const {loading, currentItems} = useContext(CountriesContext)
   // console.log(currentItems)
   return (
-    <div>
+    <div className='z-0 relative'>
       {loading && <p>Loading</p>}
       <ul className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 lg:gap-20 justify-center px-5 md:px-20'>
       {

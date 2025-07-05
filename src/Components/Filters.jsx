@@ -56,17 +56,17 @@ const Filters = () => {
                     onChange={e => setSearchValue(e.target.value)}
                     />
                 </div>
-                <div ref={dropdownRef} className='cursor-pointer w-fit shadow-md p-4 rounded-md text-lm-input  dark:text-custom-white dark:bg-dm-elements mt-10 md:m-0'>
-                    <div type='button' onClick={() => setIsOpen(prev => !prev)}>
-                        <img className='float-right w-4 h-4' src={isDarkMode ? '/dropdown-white.svg' : '/dropdown-black.svg'} alt="" />
-                        <span>{selected ||  "Filter by Region"}</span>
+                <div ref={dropdownRef} className='relative cursor-pointer w-3xs shadow-md  rounded-md text-lm-text  dark:text-custom-white dark:bg-dm-elements mt-10 md:m-0'>
+                    <div className='flex items-center justify-between p-4' type='button' onClick={() => setIsOpen(prev => !prev)}>
+                        <span className=''>{selected ||  "Filter by Region"}</span>
+                        <img className='w-4 h-4 ml-8' src={isDarkMode ? '/dropdown-white.svg' : '/dropdown-black.svg'} alt="" />
                     </div>
                    
                         {isOpen && (
-                         <ul>
+                         <ul className='list-none z-50 absolute bg-lm-bg w-full dark:bg-dm-elements mt-2 rounded-md'>
                              {
                                 regions && regions.map((c, i) => (
-                                    <li  className='' key={i}
+                                    <li  className='list-none px-4 py-1 hover:bg-dm-bg hover:text-custom-white dark:hover:bg-lm-bg dark:hover:text-lm-text' key={i}
                                         onClick={() => {
                                         setSelected(c)
                                         setSelectedRegion(c)
