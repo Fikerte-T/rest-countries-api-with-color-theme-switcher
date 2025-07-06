@@ -22,14 +22,32 @@ function App() {
   
 
   // console.log(countries)
-  const fetchCountries = () => {
-    fetch('./data.json')
-    .then(res => res.json())
-    .then(data => setCountries(data))
-    .catch((err) => {
-      setError(err)
+  const fetchCountries = async () => {
+    // fetch('./date.json')
+    // .then(res => res.json())
+    // .then(data => setCountries(data))
+    // .catch((err) => {
+    //   setError(err)
+    //   setLoading(false)
+    // })
+    //  .catch(err => console.log('Failed to fetch JSON:', err.message))
+    // const response = await fetch('./dat.json');
+    // const text = await response.text();
+    // console.log('Raw response:', text);
+    try {
+      const response = await fetch('/data.json')
+      const contentType = response.headers.get('content-type')
+      if(!response.ok || !contentType.includes('application/json')){
+        const text = await response.text()
+        throw new Error('Cannot find data')
+      }
+      const data = await response.json()
+      setCountries(data)
       setLoading(false)
-    })
+    } catch(error){
+      console.log(error.message)
+      setError(error.message)
+    }
   }
   const filterRegions = () => {
     const array = countries.map(c => c.region)
@@ -50,7 +68,7 @@ function App() {
     } 
   }, [countries])
 
-  // console.log(regions)
+  console.log(error)
   return (
     <CountriesContext.Provider value={{isDarkMode, setIsDarkMode, error, countries, setCountries, loading, setLoading, regions, setRegions, filteredCountries, setFilteredCountries, currentItems, setCurrentItems, currentPage, setCurrentPage}}>
     <Router>
