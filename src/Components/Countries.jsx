@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 
 const Countries = () => {
   const {loading, currentItems, error} = useContext(CountriesContext)
-  // console.log(currentItems)
   return (
     <div className='z-0 relative'>
       {loading && <p>Loading</p>}
