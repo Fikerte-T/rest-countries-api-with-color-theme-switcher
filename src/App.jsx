@@ -18,22 +18,7 @@ function App() {
   const [currentPage, setCurrentPage] = useState(1)
   const [isDarkMode, setIsDarkMode] = useState(false)
 
-
-  
-
-  // console.log(countries)
   const fetchCountries = async () => {
-    // fetch('./date.json')
-    // .then(res => res.json())
-    // .then(data => setCountries(data))
-    // .catch((err) => {
-    //   setError(err)
-    //   setLoading(false)
-    // })
-    //  .catch(err => console.log('Failed to fetch JSON:', err.message))
-    // const response = await fetch('./dat.json');
-    // const text = await response.text();
-    // console.log('Raw response:', text);
     try {
       const response = await fetch('/data.json')
       const contentType = response.headers.get('content-type')
@@ -68,7 +53,6 @@ function App() {
     } 
   }, [countries])
 
-  console.log(error)
   return (
     <CountriesContext.Provider value={{isDarkMode, setIsDarkMode, error, countries, setCountries, loading, setLoading, regions, setRegions, filteredCountries, setFilteredCountries, currentItems, setCurrentItems, currentPage, setCurrentPage}}>
     <Router>

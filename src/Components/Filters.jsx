@@ -31,7 +31,6 @@ const Filters = () => {
         } 
         if(searchValue !== '') {
             const filtered = countries.filter(c => c.name.toLowerCase().includes(searchValue.toLowerCase()))
-            // console.log(filtered)
             if(filtered.length === 0) {
                 setCurrentPage(0)
             }
